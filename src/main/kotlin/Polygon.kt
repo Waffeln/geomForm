@@ -1,4 +1,4 @@
-class Polygon : GeoForm {
+class Polygon : GeoForm() {
 
     var x: Array<Int>
     var y: Array<Int>
@@ -8,7 +8,6 @@ class Polygon : GeoForm {
         y= emptyArray()
         val arr = super.checkInput(20, 3, "Polygon")
 
-        println("array ist " + arr.size)
         for(values in arr[0]){
             x = x.plus(values)
         }
@@ -16,6 +15,7 @@ class Polygon : GeoForm {
         for (values in arr[1]){
             y = y.plus(values)
         }
+        println("Gespeichert")
     }
 
 }

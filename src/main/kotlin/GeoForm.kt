@@ -1,4 +1,4 @@
-interface GeoForm {
+open class GeoForm {
 
     fun checkInput(max: Int, min: Int, type: String): Array<Array<Int>>{
         println("Bitte geben Sie die Koordinaten des Geometrie-Typen '$type' ein und bestätigen Sie mit der Eingabe-Taste.")
@@ -8,7 +8,9 @@ interface GeoForm {
         var x = emptyArray<Int>()
         var y = emptyArray<Int>()
 
-        if (inp[inp.length-1] != ';'){++count}
+        if (inp[inp.length-1] != ';'){
+            ++count
+        }
 
         for (i in 0..inp.length-1){
             if(inp[i] == ';'){
@@ -35,7 +37,6 @@ interface GeoForm {
 
             if (inp[inp.length-1].isDigit()){
                 y = y.plus(numSafe.toInt())
-                numSafe = ""
                 ++count
             }
 

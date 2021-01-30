@@ -1,4 +1,4 @@
-class Line : GeoForm {
+class Line : GeoForm() {
     var x: Array<Int>
     var y: Array<Int>
 
@@ -7,7 +7,6 @@ class Line : GeoForm {
         y= emptyArray()
         val arr = super.checkInput(10, 2, "Linie")
 
-        println("array ist " + arr.size)
         for(values in arr[0]){
             x = x.plus(values)
         }
@@ -15,5 +14,7 @@ class Line : GeoForm {
         for (values in arr[1]){
             y = y.plus(values)
         }
+        println("Gespeichert")
+        readLine()
     }
 }
