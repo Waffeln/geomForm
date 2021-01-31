@@ -1,24 +1,21 @@
-class Line : GeoForm() {
-    var x: Array<Int>
-    var y: Array<Int>
+class Line {
+    var x: List<Int>
+    var y: List<Int>
 
     init {
-        x= emptyArray()
-        y= emptyArray()
-        val arr = checkInput(10, 2, "Linie")
+        x= emptyList()
+        y= emptyList()
+        val lis = GeoForm.checkInput(10, 2, "Linie")
 
-        for(values in arr[0]){
+        for(values in lis[0]){
             x = x.plus(values)
         }
 
-        for (values in arr[1]){
+        for (values in lis[1]){
             y = y.plus(values)
         }
         println("Gespeichert")
         readLine()
     }
 
-    fun deleteForm(gf: Array<Line>, index: Int): Array<Line>{
-        return gf.drop(index).toTypedArray()
-    }
 }

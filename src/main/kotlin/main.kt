@@ -1,6 +1,4 @@
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
-import kotlin.system.exitProcess
-
+var running = true
 var horizStar = "***********************************************************"
 
 fun geoChoice(form: String): Int{
@@ -24,11 +22,11 @@ fun formChoice(): String{
 
 fun main(args: Array<String>) {
 
-    var dotArray = emptyArray<Dot>()
-    var lineArray = emptyArray<Line>()
-    var polygonArray = emptyArray<Polygon>()
+    var pointList = emptyList<Point>()
+    var lineList = emptyList<Line>()
+    var polygonList = emptyList<Polygon>()
 
-    while(true) {
+    while(running) {
         println(horizStar)
         println("* Willkommen bei der Geometrien-Verwaltung!               *")
         println(horizStar)
@@ -47,23 +45,23 @@ fun main(args: Array<String>) {
             "1" -> {
                 input = formChoice()
                 when(input){
-                    "1" -> dotArray = dotArray.plus(Dot())
-                    "2" -> lineArray = lineArray.plus(Line())
-                    "3" -> polygonArray = polygonArray.plus(Polygon())
+                    "1" -> pointList = pointList.plus(Point())
+                    "2" -> lineList = lineList.plus(Line())
+                    "3" -> polygonList = polygonList.plus(Polygon())
                 }
             }
             "2" -> {
                 input = formChoice()
                 when(input){
-                    "1" -> dotArray = GeoForm.deleteForm(dotArray, geoChoice("Punkt")).toTypedArray()
-                    "2" -> lineArray = GeoForm.deleteForm(lineArray, geoChoice("Linie")).toTypedArray()
-                    "3" -> polygonArray = GeoForm.deleteForm(polygonArray, geoChoice("Polygon")).toTypedArray()
+                    "1" -> pointList = GeoForm.deletePoint(pointList, geoChoice("Punkt"))
+                    "2" -> lineList = GeoForm.deleteLine(lineList, geoChoice("Linie"))
+                    "3" -> polygonList = GeoForm.deletePolygon(polygonList, geoChoice("Polygon"))
                 }
             }
-            "3" -> Output.geoOutput(dotArray)
-            "4" -> Output.geoOutput(lineArray)
-            "5" -> Output.geoOutput(polygonArray)
-            "6" -> exitProcess(0)
+            "3" -> Output.geoOutput(pointList)
+            "4" -> Output.geoOutput(lineList)
+            "5" -> Output.geoOutput(polygonList)
+            "6" -> running = false
         }
 
     }

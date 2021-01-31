@@ -1,25 +1,21 @@
-class Polygon : GeoForm() {
+class Polygon {
 
-    var x: Array<Int>
-    var y: Array<Int>
+    var x: List<Int>
+    var y: List<Int>
 
     init {
-        x= emptyArray()
-        y= emptyArray()
-        val arr = checkInput(20, 3, "Polygon")
+        x= emptyList()
+        y= emptyList()
+        val lis = GeoForm.checkInput(20, 3, "Polygon")
 
-        for(values in arr[0]){
+        for(values in lis[0]){
             x = x.plus(values)
         }
 
-        for (values in arr[1]){
+        for (values in lis[1]){
             y = y.plus(values)
         }
         println("Gespeichert")
-    }
-
-    fun deleteForm(gf: Array<Line>, index: Int): Array<Line>{
-        return gf.drop(index).toTypedArray()
     }
 
 }

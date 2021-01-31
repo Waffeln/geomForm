@@ -1,61 +1,49 @@
-open class GeoForm {
+class GeoForm {
     companion object {
 
-        fun <T>deleteForm(gf: Array<T>, index: Int): List<T>{
+        fun deletePoint(gf: List<Point>, index: Int): List<Point>{
             return gf.drop(index)
         }
 
-        fun checkInput(max: Int, min: Int, type: String): Array<Array<Int>> {
+        fun deleteLine(gf: List<Line>, index: Int): List<Line>{
+            return gf.drop(index)
+        }
+
+        fun deletePolygon(gf: List<Polygon>, index: Int): List<Polygon>{
+            return gf.drop(index)
+        }
+
+        fun checkInput(max: Int, min: Int, type: String): List<List<Int>> {
             println("Bitte geben Sie die Koordinaten des Geometrie-Typen '$type' ein und bestätigen Sie mit der Eingabe-Taste.")
             val inp: String = readLine().toString()
-            var count = 0
-            var result = emptyArray<Array<Int>>()
-            var x = emptyArray<Int>()
-            var y = emptyArray<Int>()
+            var result: List<List<Int>>
+            var x = emptyList<Int>()
+            var y = emptyList<Int>()
 
-            if (inp[inp.length - 1] != ';') {
-                ++count
+            var splitInp : List<String>
+            splitInp = inp.split(";")
+
+            if (splitInp[splitInp.size-1]== ""){
+                splitInp = splitInp.drop(splitInp.size-1)
             }
 
-            for (i in 0..inp.length - 1) {
-                if (inp[i] == ';') {
-                    ++count
-                }
+            for (coords in splitInp){
+                var xyCoord : List<String>
+                xyCoord = coords.split(",")
+                x = x.plus(xyCoord[0].toInt())
+                y = y.plus(xyCoord[1].toInt())
             }
 
-            if (count >= min && count <= max) {
-                count = 0
-                var numSafe = ""
+            result = listOf(x,y)
 
-                for (i in 0..(inp.length - 1)) {
-                    if (inp[i].isDigit()) {
-                        numSafe += inp[i]
-                    } else if (inp[i] == ',') {
-                        x = x.plus(numSafe.toInt())
-                        numSafe = ""
-                    } else if (inp[i] == ';') {
-                        y = y.plus(numSafe.toInt())
-                        numSafe = ""
-                        ++count
-                    }
-                }
-
-                if (inp[inp.length - 1].isDigit()) {
-                    y = y.plus(numSafe.toInt())
-                    ++count
-                }
-
-                result = result.plus(x)
-                result = result.plus(y)
-            }
-
-            if (count < min) {
+            if (x.size < min) {
                 println("Fehler! Eine Geometrie vom Typ '$type' muss mindestens $min Koordinatenpaare haben. Bitte versuchen Sie es erneut.")
                 result = checkInput(max, min, type)
-            } else if (count > max) {
+            } else if (x.size > max) {
                 println("Feler! Eine Geometrie vom Typ '$type' darf nur maximal $max Koordinatenpaare haben. Bitte versuchen Sie es erneut.")
                 result = checkInput(max, min, type)
             }
+
             return result
         }
     }
