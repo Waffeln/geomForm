@@ -1,26 +1,23 @@
 class GeoForm {
     companion object {
 
-        fun swap(n1: Int, n2: Int){
-            var n3 = n1
-
-        }
-
         fun sortCoordList(coordXList: List<Int>, coordYList: List<Int>): List<Int>{
             var cache : Int
+            var v: Int
 
             for (i in 0..coordXList.size-1){
                 for (n in i..coordXList.size-1){
                     if (coordXList[n]<coordXList[i]){
-                        cache = coordXList[n]
-                        coordXList[n] = coordXList[i]
-                        coordXList[i] = cache
-
-                        cache = coordYList[n]
-                        coordYList[n] = coordYList[i]
-                        coordYList[i] = cache
+                        v=n
                     }
                 }
+                cache = coordXList[v]
+                coordXList[v] = coordXList[i]
+                coordXList[i] = cache
+
+                cache = coordYList[n]
+                coordYList[v] = coordYList[i]
+                coordYList[i] = cache
             }
 
 
