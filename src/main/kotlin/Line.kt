@@ -1,4 +1,2 @@
-class Line(pointL: List<Point>) {
-    var points: List<Point> = emptyList()
-
+data class Line(val points: List<Point>) {
 }

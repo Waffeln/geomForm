@@ -1,10 +1,10 @@
 class GeoForm {
     companion object {
 
-        fun sortCoordList(coordList: List<Point>,): List<Point>{
+        /*fun sortCoordList(coordList: List<Point>,): List<Point>{
             coordList.sortedBy { }
             return listOf(listOf(0))
-        }
+        }*/
 
         fun deletePoint(gf: List<Point>, index: Int): List<Point>{
             return gf.minus(gf[index-2])

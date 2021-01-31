@@ -1,4 +1,2 @@
-class Polygon(pointL: List<Point>) {
-
-    lateinit var points: List<Point>
+data class Polygon(val points: List<Point>) {
 }
