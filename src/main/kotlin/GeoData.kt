@@ -14,10 +14,7 @@ class GeoData {
 
         fun makeLine() {
             val lis = GeoForm.checkInput(10, 2, "Linie")
-
-            for (i in lis) {
                 lineList = lineList.plus(Line(lis))
-            }
 
             println("Gespeichert")
             readLine()
@@ -25,10 +22,7 @@ class GeoData {
 
         fun makePolygon() {
             val lis = GeoForm.checkInput(20, 3, "Polygon")
-
-            for (i in lis) {
                 polygonList = polygonList.plus(Polygon(lis))
-            }
 
             println("Gespeichert")
             readLine()

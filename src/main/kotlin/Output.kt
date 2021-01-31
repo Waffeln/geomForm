@@ -28,8 +28,9 @@ class Output {
 
         fun geoOutput(coordList: List<Point>): String {
             var result = ""
+            var sortedList = GeoForm.sortCoordList(coordList)
             for (i in 0.. coordList.size-1){
-                result += (" ${coordList[i].x},${coordList[i].y};")
+                result += (" ${sortedList[i].x},${sortedList[i].y};")
             }
             return result
         }
