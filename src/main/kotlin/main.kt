@@ -6,7 +6,7 @@ fun geoChoice(form: String): Int{
     println("Welche Form vom Typ '$form' wollen Sie entfernen?")
     input = readLine().toString()
 
-    return input.toInt()-1
+    return input.toInt()+1
 }
 
 fun formChoice(): String{
@@ -53,14 +53,27 @@ fun main(args: Array<String>) {
             "2" -> {
                 input = formChoice()
                 when(input){
-                    "1" -> pointList = GeoForm.deletePoint(pointList, geoChoice("Punkt"))
-                    "2" -> lineList = GeoForm.deleteLine(lineList, geoChoice("Linie"))
-                    "3" -> polygonList = GeoForm.deletePolygon(polygonList, geoChoice("Polygon"))
-                }
+                    "1" -> {
+                        pointList = GeoForm.deletePoint(pointList, geoChoice("Punkt"))
+                        println("Gelöscht.")
+                        readLine()
+                    }
+                    "2" -> {
+                        lineList = GeoForm.deleteLine(lineList, geoChoice("Linie"))
+                        println("Gelöscht.")
+                        readLine()
+                    }
+                    "3" -> {
+                        polygonList = GeoForm.deletePolygon(polygonList, geoChoice("Polygon"))
+                        println("Gelöscht.")
+                        readLine()
+                    }
+
+                    }
             }
-            "3" -> Output.geoOutput(pointList)
-            "4" -> Output.geoOutput(lineList)
-            "5" -> Output.geoOutput(polygonList)
+            "3" -> Output.showPointList(pointList)
+            "4" -> Output.showLineList(lineList)
+            "5" -> Output.showPolygonList(polygonList)
             "6" -> running = false
         }
 

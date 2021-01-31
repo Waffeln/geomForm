@@ -2,15 +2,15 @@ class GeoForm {
     companion object {
 
         fun deletePoint(gf: List<Point>, index: Int): List<Point>{
-            return gf.drop(index)
+            return gf.minus(gf[index-2])
         }
 
         fun deleteLine(gf: List<Line>, index: Int): List<Line>{
-            return gf.drop(index)
+            return gf.minus(gf[index-2])
         }
 
         fun deletePolygon(gf: List<Polygon>, index: Int): List<Polygon>{
-            return gf.drop(index)
+            return gf.minus(gf[index-2])
         }
 
         fun checkInput(max: Int, min: Int, type: String): List<List<Int>> {
@@ -23,14 +23,18 @@ class GeoForm {
             var splitInp : List<String>
             splitInp = inp.split(";")
 
-            if (splitInp[splitInp.size-1]== ""){
-                splitInp = splitInp.drop(splitInp.size-1)
+            if (splitInp[splitInp.size-1] == ""){
+                splitInp = splitInp.minus("")
             }
 
             for (coords in splitInp){
                 var xyCoord : List<String>
                 xyCoord = coords.split(",")
-                x = x.plus(xyCoord[0].toInt())
+                if (xyCoord[0][0] == ' '){
+                    x= x.plus(xyCoord[0].split(" ")[1].toInt())
+                }else {
+                    x = x.plus(xyCoord[0].toInt())
+                }
                 y = y.plus(xyCoord[1].toInt())
             }
 
