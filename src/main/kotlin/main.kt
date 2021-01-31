@@ -50,17 +50,17 @@ fun main(args: Array<String>) {
                 input = formChoice()
                 when(input){
                     "1" -> {
-                        GeoData.pointList = GeoForm.deletePoint(GeoData.pointList, geoChoice("Punkt"))
+                        GeoData.pointList = GeoData.deletePoint(GeoData.pointList, geoChoice("Punkt"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "2" -> {
-                        GeoData.lineList = GeoForm.deleteLine(GeoData.lineList, geoChoice("Linie"))
+                        GeoData.lineList = GeoData.deleteLine(GeoData.lineList, geoChoice("Linie"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "3" -> {
-                        GeoData.polygonList = GeoForm.deletePolygon(GeoData.polygonList, geoChoice("Polygon"))
+                        GeoData.polygonList = GeoData.deletePolygon(GeoData.polygonList, geoChoice("Polygon"))
                         println("Gelöscht.")
                         readLine()
                     }

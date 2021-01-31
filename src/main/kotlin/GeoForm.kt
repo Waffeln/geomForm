@@ -6,18 +6,6 @@ class GeoForm {
             return result
         }
 
-        fun deletePoint(gf: List<Point>, index: Int): List<Point>{
-            return gf.minus(gf[index-2])
-        }
-
-        fun deleteLine(gf: List<Line>, index: Int): List<Line>{
-            return gf.minus(gf[index-2])
-        }
-
-        fun deletePolygon(gf: List<Polygon>, index: Int): List<Polygon>{
-            return gf.minus(gf[index-2])
-        }
-
         fun checkInput(max: Int, min: Int, type: String): List<Point> {
             println("Bitte geben Sie die Koordinaten des Geometrie-Typen '$type' ein und bestätigen Sie mit der Eingabe-Taste.")
             val inp: String = readLine().toString()

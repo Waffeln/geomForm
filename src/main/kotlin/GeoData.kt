@@ -27,5 +27,17 @@ class GeoData {
             println("Gespeichert")
             readLine()
         }
+
+        fun deletePoint(gf: List<Point>, index: Int): List<Point>{
+            return gf.minus(gf[index-2])
+        }
+
+        fun deleteLine(gf: List<Line>, index: Int): List<Line>{
+            return gf.minus(gf[index-2])
+        }
+
+        fun deletePolygon(gf: List<Polygon>, index: Int): List<Polygon>{
+            return gf.minus(gf[index-2])
+        }
     }
 }
