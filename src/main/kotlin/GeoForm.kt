@@ -1,27 +1,34 @@
 class GeoForm {
     companion object {
 
-        fun sortCoordList(coordXList: List<Int>, coordYList: List<Int>): List<Int>{
+        fun sortCoordList(coordXList: List<Int>, coordYList: List<Int>): List<List<Int>>{
             var cache : Int
-            var v: Int
+            var v = 0
+            var result: List<List<Int>>
+            var swap = false
 
             for (i in 0..coordXList.size-1){
                 for (n in i..coordXList.size-1){
                     if (coordXList[n]<coordXList[i]){
                         v=n
+                        swap = true
                     }
                 }
-                cache = coordXList[v]
-                coordXList[v] = coordXList[i]
-                coordXList[i] = cache
+                if (swap == true){
+                    cache = coordXList[v]
+                    coordXList[v] = coordXList[i]
+                    coordXList[i] = cache
 
-                cache = coordYList[n]
-                coordYList[v] = coordYList[i]
-                coordYList[i] = cache
+                    cache = coordYList[v]
+                    coordYList[v] = coordYList[i]
+                    coordYList[i] = cache
+                    swap = false
             }
 
 
-            return listOf<Int>(2,3)
+            result = listOf(coordXList, coordYList)
+
+            return result
         }
 
         fun deletePoint(gf: List<Point>, index: Int): List<Point>{
