@@ -5,7 +5,7 @@ class Line : GeoForm() {
     init {
         x= emptyArray()
         y= emptyArray()
-        val arr = super.checkInput(10, 2, "Linie")
+        val arr = checkInput(10, 2, "Linie")
 
         for(values in arr[0]){
             x = x.plus(values)
@@ -16,5 +16,9 @@ class Line : GeoForm() {
         }
         println("Gespeichert")
         readLine()
+    }
+
+    fun deleteForm(gf: Array<Line>, index: Int): Array<Line>{
+        return gf.drop(index).toTypedArray()
     }
 }

@@ -6,7 +6,7 @@ class Polygon : GeoForm() {
     init {
         x= emptyArray()
         y= emptyArray()
-        val arr = super.checkInput(20, 3, "Polygon")
+        val arr = checkInput(20, 3, "Polygon")
 
         for(values in arr[0]){
             x = x.plus(values)
@@ -16,6 +16,10 @@ class Polygon : GeoForm() {
             y = y.plus(values)
         }
         println("Gespeichert")
+    }
+
+    fun deleteForm(gf: Array<Line>, index: Int): Array<Line>{
+        return gf.drop(index).toTypedArray()
     }
 
 }

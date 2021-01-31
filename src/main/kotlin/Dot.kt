@@ -1,21 +1,19 @@
 class Dot : GeoForm() {
-    var x: Array<Int>
-    var y: Array<Int>
+    var x: Int
+    var y: Int
 
     init {
-        x= emptyArray()
-        y= emptyArray()
-        val arr = super.checkInput(1, 1, "Punkt")
+        val arr = checkInput(1, 1, "Punkt")
 
-        for(values in arr[0]){
-            x = x.plus(values)
-        }
+        x = arr[0].get(0)
+        y = arr[1].get(0)
 
-        for (values in arr[1]){
-            y = y.plus(values)
-        }
         println("Gespeichert")
         readLine()
+    }
+
+    fun deleteForm(gf: Array<Dot>, index: Int): Array<Dot>{
+        return gf.drop(index).toTypedArray()
     }
 
 }
