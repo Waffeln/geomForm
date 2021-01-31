@@ -6,7 +6,7 @@ fun geoChoice(form: String): Int{
     println("Welche Form vom Typ '$form' wollen Sie entfernen?")
     input = readLine().toString()
 
-    return input.toInt()+1
+    return input.toInt()-1
 }
 
 fun formChoice(): String{
