@@ -1,5 +1,2 @@
-class Point(pX: Int, pY: Int) {
-    var x = pX
-    var y = pY
-
+data class Point(val x: Int, val y: Int) {
 }

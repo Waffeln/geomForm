@@ -19,5 +19,4 @@ class Tests {
         assertEquals(GeoData.deletePoint(testL0, 1), testL1, "Auschließlich 2. Punkt wurde nicht gelöscht")
     }
 
-
 }

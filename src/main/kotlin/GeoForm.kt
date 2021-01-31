@@ -8,7 +8,7 @@ class GeoForm {
 
         fun checkInput(max: Int, min: Int, type: String): List<Point> {
             println("Bitte geben Sie die Koordinaten des Geometrie-Typen '$type' ein und bestätigen Sie mit der Eingabe-Taste.")
-            val inp: String = readLine().toString()
+            var inp: String = readLine().toString()
             var result = emptyList<Point>()
             var x = emptyList<Int>()
             var y = emptyList<Int>()
