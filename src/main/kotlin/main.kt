@@ -41,35 +41,35 @@ fun main(args: Array<String>) {
             "1" -> {
                 input = formChoice()
                 when(input){
-                    "1" -> GeoDaten.pointList.plus(GeoDaten.makePoint())
-                    "2" -> GeoDaten.lineList.plus(GeoDaten.makeLine())
-                    "3" -> GeoDaten.polygonList.plus(GeoDaten.makePolygon())
+                    "1" -> GeoData.pointList.plus(GeoData.makePoint())
+                    "2" -> GeoData.lineList.plus(GeoData.makeLine())
+                    "3" -> GeoData.polygonList.plus(GeoData.makePolygon())
                 }
             }
             "2" -> {
                 input = formChoice()
                 when(input){
                     "1" -> {
-                        GeoDaten.pointList = GeoForm.deletePoint(GeoDaten.pointList, geoChoice("Punkt"))
+                        GeoData.pointList = GeoForm.deletePoint(GeoData.pointList, geoChoice("Punkt"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "2" -> {
-                        GeoDaten.lineList = GeoForm.deleteLine(GeoDaten.lineList, geoChoice("Linie"))
+                        GeoData.lineList = GeoForm.deleteLine(GeoData.lineList, geoChoice("Linie"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "3" -> {
-                        GeoDaten.polygonList = GeoForm.deletePolygon(GeoDaten.polygonList, geoChoice("Polygon"))
+                        GeoData.polygonList = GeoForm.deletePolygon(GeoData.polygonList, geoChoice("Polygon"))
                         println("Gelöscht.")
                         readLine()
                     }
 
                     }
             }
-            "3" -> Output.showPointList(GeoDaten.pointList)
-            "4" -> Output.showLineList(GeoDaten.lineList)
-            "5" -> Output.showPolygonList(GeoDaten.polygonList)
+            "3" -> Output.showPointList(GeoData.pointList)
+            "4" -> Output.showLineList(GeoData.lineList)
+            "5" -> Output.showPolygonList(GeoData.polygonList)
             "6" -> running = false
         }
 

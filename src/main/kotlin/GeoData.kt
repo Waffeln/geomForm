@@ -1,4 +1,4 @@
-class GeoDaten {
+class GeoData {
     companion object {
         var pointList = emptyList<Point>()
         var lineList = emptyList<Line>()
