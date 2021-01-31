@@ -22,10 +22,6 @@ fun formChoice(): String{
 
 fun main(args: Array<String>) {
 
-    var pointList = emptyList<Point>()
-    var lineList = emptyList<Line>()
-    var polygonList = emptyList<Polygon>()
-
     while(running) {
         println(horizStar)
         println("* Willkommen bei der Geometrien-Verwaltung!               *")
@@ -45,35 +41,35 @@ fun main(args: Array<String>) {
             "1" -> {
                 input = formChoice()
                 when(input){
-                    "1" -> pointList = pointList.plus(Point())
-                    "2" -> lineList = lineList.plus(Line())
-                    "3" -> polygonList = polygonList.plus(Polygon())
+                    "1" -> GeoDaten.pointList.plus(GeoDaten.makePoint())
+                    "2" -> GeoDaten.lineList.plus(GeoDaten.makeLine())
+                    "3" -> GeoDaten.polygonList.plus(GeoDaten.makePolygon())
                 }
             }
             "2" -> {
                 input = formChoice()
                 when(input){
                     "1" -> {
-                        pointList = GeoForm.deletePoint(pointList, geoChoice("Punkt"))
+                        GeoDaten.pointList = GeoForm.deletePoint(GeoDaten.pointList, geoChoice("Punkt"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "2" -> {
-                        lineList = GeoForm.deleteLine(lineList, geoChoice("Linie"))
+                        GeoDaten.lineList = GeoForm.deleteLine(GeoDaten.lineList, geoChoice("Linie"))
                         println("Gelöscht.")
                         readLine()
                     }
                     "3" -> {
-                        polygonList = GeoForm.deletePolygon(polygonList, geoChoice("Polygon"))
+                        GeoDaten.polygonList = GeoForm.deletePolygon(GeoDaten.polygonList, geoChoice("Polygon"))
                         println("Gelöscht.")
                         readLine()
                     }
 
                     }
             }
-            "3" -> Output.showPointList(pointList)
-            "4" -> Output.showLineList(lineList)
-            "5" -> Output.showPolygonList(polygonList)
+            "3" -> Output.showPointList(GeoDaten.pointList)
+            "4" -> Output.showLineList(GeoDaten.lineList)
+            "5" -> Output.showPolygonList(GeoDaten.polygonList)
             "6" -> running = false
         }
 

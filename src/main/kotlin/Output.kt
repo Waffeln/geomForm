@@ -13,7 +13,7 @@ class Output {
         fun showLineList(lL: List<Line>){
             println(head)
             for (i in 0.. lL.size-1){
-                println("|${i+1} |${geoOutput(listOf(lL[i].x, lL[i].y))}")
+                println("|${i+1} |${geoOutput(lL[i].points)}")
             }
             readLine()
         }
@@ -21,15 +21,15 @@ class Output {
         fun showPolygonList(pL: List<Polygon>){
             println(head)
             for (i in 0.. pL.size-1){
-                println("|${i+1} |${geoOutput(listOf(pL[i].x, pL[i].y))}")
+                println("|${i+1} |${geoOutput(pL[i].points)}")
             }
             readLine()
         }
 
-        fun geoOutput(coordList: List<List<Int>>): String {
+        fun geoOutput(coordList: List<Point>): String {
             var result = ""
-            for (i in 0.. coordList[0].size-1){
-                result += (" ${coordList[0][i]},${coordList[1][i]};")
+            for (i in 0.. coordList.size-1){
+                result += (" ${coordList[i].x},${coordList[i].y};")
             }
             return result
         }

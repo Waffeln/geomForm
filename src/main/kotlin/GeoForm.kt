@@ -1,34 +1,9 @@
 class GeoForm {
     companion object {
 
-        fun sortCoordList(coordXList: List<Int>, coordYList: List<Int>): List<List<Int>>{
-            var cache : Int
-            var v = 0
-            var result: List<List<Int>>
-            var swap = false
-
-            for (i in 0..coordXList.size-1){
-                for (n in i..coordXList.size-1){
-                    if (coordXList[n]<coordXList[i]){
-                        v=n
-                        swap = true
-                    }
-                }
-                if (swap == true){
-                    cache = coordXList[v]
-                    coordXList[v] = coordXList[i]
-                    coordXList[i] = cache
-
-                    cache = coordYList[v]
-                    coordYList[v] = coordYList[i]
-                    coordYList[i] = cache
-                    swap = false
-            }
-
-
-            result = listOf(coordXList, coordYList)
-
-            return result
+        fun sortCoordList(coordList: List<Point>,): List<Point>{
+            coordList.sortedBy { }
+            return listOf(listOf(0))
         }
 
         fun deletePoint(gf: List<Point>, index: Int): List<Point>{
@@ -43,10 +18,10 @@ class GeoForm {
             return gf.minus(gf[index-2])
         }
 
-        fun checkInput(max: Int, min: Int, type: String): List<List<Int>> {
+        fun checkInput(max: Int, min: Int, type: String): List<Point> {
             println("Bitte geben Sie die Koordinaten des Geometrie-Typen '$type' ein und bestätigen Sie mit der Eingabe-Taste.")
             val inp: String = readLine().toString()
-            var result: List<List<Int>>
+            var result = emptyList<Point>()
             var x = emptyList<Int>()
             var y = emptyList<Int>()
 
@@ -68,7 +43,11 @@ class GeoForm {
                 y = y.plus(xyCoord[1].toInt())
             }
 
-            result = listOf(x,y)
+            for (i in 0..x.size-1){
+                val point =Point(x[i],y[i])
+
+                result = result.plus(point)
+            }
 
             if (x.size < min) {
                 println("Fehler! Eine Geometrie vom Typ '$type' muss mindestens $min Koordinatenpaare haben. Bitte versuchen Sie es erneut.")
@@ -77,7 +56,6 @@ class GeoForm {
                 println("Feler! Eine Geometrie vom Typ '$type' darf nur maximal $max Koordinatenpaare haben. Bitte versuchen Sie es erneut.")
                 result = checkInput(max, min, type)
             }
-
             return result
         }
     }
